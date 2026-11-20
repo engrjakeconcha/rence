@@ -1,0 +1,22 @@
+{
+  "tool": "Built-in imagegen",
+  "common": "Create a new photorealistic editorial campaign image for RENCE professional home-service massage. Landscape 16:9 composition, consistent deep forest-green interior and linens, soft directional daylight with restrained mint highlights, premium realistic photography, natural proportions, no text, no logos or watermarks. Professional therapeutic context. All people are adults and fully clothed in opaque everyday clothing. Use the supplied portrait only as Rence's identity reference when his face is visible; preserve his face, hair, age, skin tone and body proportions. Rence wears a plain black T-shirt. ",
+  "shots": [
+    {
+      "key": "wholeBody",
+      "file": "massage-whole-body.webp",
+      "prompt": "A professional home massage session viewed from the side. Rence stands beside a portable massage table, gently pressing the upper back and shoulders of an adult male client through the client's opaque black T-shirt. The client lies face down and wears a fully covering black T-shirt and dark track pants, with a deep-green blanket over his legs. Client's face is turned away and outside the main focus. Show a believable working stance and correct hand anatomy. Wide composition that clearly shows the portable table and professional at-home setting. No exposed torso."
+    },
+    {
+      "key": "technique",
+      "file": "massage-technique.webp",
+      "prompt": "Tight editorial close-up of a professional shoulder massage through an opaque dark charcoal T-shirt. Rence's two naturally proportioned hands rest on and gently compress the clothed shoulders of an adult male client resting comfortably face down on a massage table. Crop above the client's mid-back; keep the client's face out of frame. Deep-green towel and portable-table details in the softly blurred background. Fully clothed, no exposed torso. Focus on tactile fabric, correct hands, calm professional care, and natural lighting."
+    },
+    {
+      "key": "ventosa",
+      "file": "massage-ventosa.webp",
+      "prompt": "Premium product still-life for a massage with Ventosa service. Three clean transparent modern silicone cupping cups, an unbranded amber massage-oil bottle, and neatly folded textured deep forest-green towels on the edge of a professional portable massage table. Clean organized home-treatment preparation, realistic glass/silicone reflections, softly lit deep-green backdrop, sophisticated editorial composition and shallow depth of field. No people, no skin, no medical claims, no labels. Focus on the actual cupping equipment, with an uncluttered lower-left corner suitable for a short service label."
+    }
+  ],
+  "ventosaRefinement": "Remove the background person completely. Preserve cups, oil bottle, folded towels, forest-green setting and lighting. Equipment-only still life; no people, body parts, text, or logos."
+}

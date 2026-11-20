@@ -7,7 +7,7 @@
 - Final production build passed with all eight static routes generated, including sitemap, robots, favicon, touch icon, and social image. The media-inclusive source was verified from a clean copy in `/tmp/rence-qa` with the same lockfile to avoid intermittent read stalls in the Documents checkout.
 - TypeScript checks passed before and after the media and testimonial components were added.
 - Supplied MP4 metadata inspected: H.264/AAC, 360 × 640, durations 2:30 and 2:41. Sampled frames show professional home-service massage. Full files retained; lightweight poster frames exported.
-- Hero cutout generated with built-in imagegen and exported as 123 KB WebP with alpha. Matching profile (42 KB) and session-preparation (90 KB) campaign images were generated and integrated. Other treatment-image generation did not complete after a tool error; remaining panels keep branded artwork.
+- Hero cutout generated with built-in imagegen and exported as 123 KB WebP with alpha. Matching profile (42 KB) and session-preparation (90 KB) campaign images were generated and integrated. All three service cards now use final generated photographs: whole-body session (143 KB), shoulder technique (96 KB), and equipment-only Ventosa (85 KB). Their crops and successful browser decoding were verified, and the updated production build and integration checks passed.
 - Original portraits and review sources retained outside public files and ignored by Git.
 - Exact service prices, contact links, missing-booking state, and separate calendar configuration are implemented. No address, credentials, fake customer names, or aggregate ratings are invented.
 - Source and media are uploaded through the authenticated GitHub connector because command-line Git authentication is unavailable.
@@ -29,3 +29,5 @@
 The Documents checkout showed intermittent dependency read stalls and initially empty reads. A clean temporary copy installed dependencies in four seconds and built successfully; repository source was preserved. The browser preview runs from that verified temporary copy. Original staged development commits are retained on the local `local-build-history` branch; local `main` tracks the connector-published GitHub history.
 
 Google Appointment Schedule cannot be tested until the owner supplies the actual URL. Calendar sharing/privacy settings have not been checked; the view-only embed is disabled. Phone/Viber/SMS app dispatch needs testing on an actual configured mobile device. Vercel deployment and custom-domain DNS have not been performed.
+
+Product-card photography follow-up: all three rendered images loaded successfully in the browser; mobile card layout had no horizontal overflow. The Ventosa still life contains equipment only. Final prompt set: `docs/product-card-prompts.json`. Card preview: `output/service-card-preview.jpg`.

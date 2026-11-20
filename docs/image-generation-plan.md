@@ -1,6 +1,6 @@
 # RENCE campaign photography plan
 
-Status: two portrait references and the official logo have now been supplied. The owner superseded the initial full-background campaign hero with an explicit request to remove the photo background and place Rence at the side. The built-in image-generation tool produced a transparent cutout, saved as `public/images/generated/rence-hero-cutout.webp` (123 KB). It is the current hero. The professional profile and session-preparation photographs are now generated and integrated. Other treatment assets remain planned after an image-generation tool failure; those panels retain CSS artwork. See `docs/media.md` for the executed cutout prompt.
+Status: two portrait references and the official logo have now been supplied. The owner superseded the initial full-background campaign hero with an explicit request to remove the photo background and place Rence at the side. The built-in image-generation tool produced a transparent cutout, saved as `public/images/generated/rence-hero-cutout.webp` (123 KB). It is the current hero. The professional profile and session-preparation photographs are now generated and integrated. Three final product-card images are now complete and integrated: a fully clothed massage session, shoulder-technique close-up, and equipment-only Ventosa still life. The optional massage-detail asset remains planned. See `docs/media.md` for the executed cutout prompt.
 
 ## Shared direction
 

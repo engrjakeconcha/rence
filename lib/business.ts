@@ -7,7 +7,7 @@ export const business = {
   areas: ['Marilao', 'Bocaue', 'Meycauayan'],
   techniques: ['Shiatsu massage', 'Swedish massage', 'Body stretching', 'Massage with Ventosa'],
   services: [
-    { id: 'whole-body-60', name: 'Whole body massage', duration: '60 minutes', price: 699, tag: 'THE EVERYDAY RESET', description: 'A little time for yourself. A whole-body reset, right at home.', image: 'setup', art: 'flow' },
+    { id: 'whole-body-60', name: 'Whole body massage', duration: '60 minutes', price: 699, tag: 'THE EVERYDAY RESET', description: 'A little time for yourself. A whole-body reset, right at home.', image: 'wholeBody', art: 'flow' },
     { id: 'whole-body-90', name: 'Whole body massage', duration: '90 minutes', price: 900, tag: 'TAKE YOUR TIME', description: 'More time to slow down. Make room for a longer moment of calm.', image: 'technique', art: 'ripple' },
     { id: 'ventosa', name: 'Massage with Ventosa', duration: null, price: 1000, tag: 'A DIFFERENT RHYTHM', description: 'Massage meets cupping. Ask Rence about the session and duration.', image: 'ventosa', art: 'orbit' },
   ],
