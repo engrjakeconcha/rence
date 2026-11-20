@@ -20,7 +20,7 @@ const schema = JSON.parse(rawSchema);
 assert.deepEqual(schema.hasOfferCatalog.itemListElement.map(x => x.price), [699, 900, 1000]);
 assert.ok(!JSON.stringify(schema).includes('aggregateRating'), 'No invented ratings');
 assert.ok(!schema.address, 'No invented address');
-for (const field of ['name', 'contact', 'address', 'product']) assert.ok(html.includes(`name="${field}"`), `Missing booking field ${field}`);
+for (const field of ['name', 'contact', 'address', 'product', 'date', 'time', 'telegram']) assert.ok(html.includes(`name="${field}"`), `Missing booking field ${field}`);
 assert.ok(html.includes('https://jcit.digital'), 'Missing JCIT credits');
 assert.ok(!html.includes('ONLINE BOOKING COMING SOON'), 'Booking form should replace the placeholder');
 assert.ok(!html.includes('calendar.google.com'), 'Google Calendar should not be used for booking');

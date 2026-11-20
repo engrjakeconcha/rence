@@ -6,10 +6,12 @@ import { business } from '@/lib/business';
 
 export function BookingForm() {
  const [product, setProduct] = useState('');
+ const [minDate, setMinDate] = useState('');
  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
  const [error, setError] = useState('');
  const requestId = useRef('');
  useEffect(() => {
+  setMinDate(new Date(Date.now() + 8 * 60 * 60_000).toISOString().slice(0, 10));
   const selectService = () => {
    const id = window.location.hash.replace('#booking-', '');
    if (business.services.some(service => service.id === id)) {
@@ -42,7 +44,7 @@ export function BookingForm() {
  }
  if (status === 'success') return <div className="booking-success" role="status"><CheckCircle2 size={40}/><h3>Request sent. Time to exhale.</h3><p>Rence will contact you to arrange your schedule and confirm availability. Your appointment is not confirmed yet.</p><button type="button" className="button button-dark" onClick={() => setStatus('idle')}>Send another request</button></div>;
  return <form className="booking-form" onSubmit={submit} onChange={() => { if (status !== 'sending') requestId.current = ''; }}>
-  <div className="booking-fields"><label>Full name<input name="name" autoComplete="name" required minLength={2} maxLength={100} placeholder="Your name"/></label><label>Contact number<input name="contact" type="tel" autoComplete="tel" inputMode="tel" required minLength={7} maxLength={30} placeholder="09XX XXX XXXX"/></label><label className="field-wide">Home service address<textarea name="address" autoComplete="street-address" required minLength={10} maxLength={500} rows={3} placeholder="House / unit, street, barangay, city"/></label><label className="field-wide">Product<select name="product" value={product} required onChange={event => setProduct(event.target.value)}><option value="" disabled>Choose your massage</option>{business.services.map(service => <option key={service.id} value={service.id}>{service.name} · {service.duration} · ₱{service.price.toLocaleString('en-PH')}</option>)}</select></label></div>
+  <div className="booking-fields"><label>Full name<input name="name" autoComplete="name" required minLength={2} maxLength={100} placeholder="Your name"/></label><label>Contact number<input name="contact" type="tel" autoComplete="tel" inputMode="tel" required minLength={7} maxLength={30} placeholder="09XX XXX XXXX"/></label><label className="field-wide">Home service address<textarea name="address" autoComplete="street-address" required minLength={10} maxLength={500} rows={3} placeholder="House / unit, street, barangay, city"/></label><label className="field-wide">Product<select name="product" value={product} required onChange={event => setProduct(event.target.value)}><option value="" disabled>Choose your massage</option>{business.services.map(service => <option key={service.id} value={service.id}>{service.name} · {service.duration} · ₱{service.price.toLocaleString('en-PH')}</option>)}</select></label><label>Preferred date<input name="date" type="date" required min={minDate || undefined} aria-describedby="schedule-help"/></label><label>Preferred time<input name="time" type="time" required aria-describedby="schedule-help"/></label><label className="field-wide"><span>Telegram username <span className="optional-field">(optional)</span></span><input name="telegram" autoComplete="off" maxLength={33} placeholder="@yourusername" aria-describedby="telegram-help"/><small id="telegram-help">So Rence can reach you on Telegram, if you use it.</small></label></div><p id="schedule-help" className="form-note">All times are Philippine time (Asia/Manila, UTC+8). Choose your preferred schedule; this does not reserve a slot. Rence will confirm availability.</p>
   <div className="booking-trap" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off"/></label></div>
   <p className="form-note">By submitting, you agree to share these details with Rence to arrange your home service. Requests are welcome 24/7; every appointment needs confirmation. Male clients only.</p>
   {error && <p className="form-error" role="alert">{error} <a href={business.smsHref}>Send an SMS</a></p>}

@@ -22,6 +22,13 @@ export async function POST(request: Request) {
  const service = business.services.find(item => item.id === data.product);
  const requestId = clean(data.requestId, 36);
  if (name.length < 2 || name.length > 100 || /[\r\n\x00-\x1f]/.test(name) || !/^[+\d() .-]{7,30}$/.test(contact) || contact.replace(/\D/g, '').length < 7 || address.length < 10 || address.length > 500 || !service || !/^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/i.test(requestId)) return response({ error: 'Please enter your name, a valid contact number, full address, and selected product.' }, 400);
+ const date = clean(data.date, 10), time = clean(data.time, 5);
+ const requestedAt = new Date(`${date}T${time}:00+08:00`);
+ // Round-trip the local calendar date to reject impossible dates such as February 30.
+ if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !/^([01]\d|2[0-3]):[0-5]\d$/.test(time) || !Number.isFinite(requestedAt.getTime()) || new Date(requestedAt.getTime() + 8 * 60 * 60_000).toISOString().slice(0, 16) !== `${date}T${time}` || requestedAt.getTime() <= Date.now()) return response({ error: 'Please choose a future date and time in Philippine time (Asia/Manila).' }, 400);
+ const telegramUsername = clean(data.telegram, 33);
+ if ((data.telegram != null && typeof data.telegram !== 'string') || (telegramUsername && !/^@?[A-Za-z][A-Za-z0-9_]{4,31}$/.test(telegramUsername))) return response({ error: 'Please enter a valid Telegram username, such as @yourusername, or leave it blank.' }, 400);
+ const telegramContact = telegramUsername ? `@${telegramUsername.replace(/^@/, '')}` : 'Not provided';
  // Best-effort per-instance throttle; never retain customer details in this map.
  const now = Date.now();
  for (const [key, value] of attempts) if (value.reset < now) attempts.delete(key);
@@ -32,7 +39,7 @@ export async function POST(request: Request) {
  const apiKey = process.env.RESEND_API_KEY;
  const from = process.env.RESEND_FROM_EMAIL;
  if (!apiKey || !from) return response({ error: 'Online requests are temporarily unavailable. Please contact Rence directly.' }, 503);
- const text = `New RENCE booking request\n\nName: ${name}\nContact number: ${contact}\nAddress: ${address}\nProduct: ${service.name}\nDuration: ${service.duration}\nPrice: ₱${service.price.toLocaleString('en-PH')}\n\nStatus: Awaiting Rence’s confirmation. Contact the customer to arrange the schedule.\nRequest ID: ${requestId}`;
+ const text = `New RENCE booking request\n\nName: ${name}\nContact number: ${contact}\nAddress: ${address}\nTelegram username: ${telegramContact}\nPreferred schedule: ${date} at ${time} (Asia/Manila, UTC+8)\nProduct: ${service.name}\nDuration: ${service.duration}\nPrice: ₱${service.price.toLocaleString('en-PH')}\n\nStatus: Awaiting Rence’s confirmation. Contact the customer to confirm the requested schedule.\nRequest ID: ${requestId}`;
  try {
   const email = await fetch('https://api.resend.com/emails', {
    method: 'POST', headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Idempotency-Key': `booking-${requestId}` },
