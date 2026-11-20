@@ -1,0 +1,42 @@
+{
+  "name": "rence-massage-home-service",
+  "version": "1.0.0",
+  "description": "RENCE premium home-service massage website",
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/check-site.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/engrjakeconcha/rence.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/engrjakeconcha/rence/issues"
+  },
+  "homepage": "https://github.com/engrjakeconcha/rence#readme",
+  "dependencies": {
+    "framer-motion": "^14.14.0",
+    "lucide-react": "^1.76.0",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,7 @@
+import { MapPin, MoveDown, Sparkle } from 'lucide-react';
+import { BrandVisual } from './BrandVisual';
+import { HeroArt, Reveal } from './Motion';
+import { generatedAssets } from '@/lib/assets';
+export function Hero() {
+ return <section className="hero" id="home" aria-labelledby="hero-title"><div className="hero-topline"><span>HOME SERVICE MASSAGE</span><span><MapPin size={13}/> BULACAN, PHILIPPINES</span></div><div className="hero-visual"><HeroArt><BrandVisual asset="heroDesktop" variant="hero" priority/></HeroArt><div className="visual-caption">{generatedAssets.heroDesktop ? 'PERSONAL CARE. IN YOUR OWN SPACE.' : 'THE ART OF SLOWING DOWN.'}</div><div className="round-stamp"><Sparkle size={29}/><span>RESET YOUR<br/>RHYTHM</span></div></div><Reveal className="hero-copy"><p className="eyebrow"><span className="accent-line"/> MAKE ROOM FOR YOU.</p><h1 id="hero-title">YOUR SPACE.<br/><span>YOUR RESET.</span></h1><p className="hero-description">Professional home service massage.<br/>Delivered to you.</p><div className="hero-actions"><a className="button button-mint" href="#booking">Book your session</a><a className="text-link" href="#services">Explore services <MoveDown size={16}/></a></div></Reveal><div className="hero-baseline"><span>MALE THERAPIST. MALE CLIENTS ONLY.</span><a href="#services" aria-label="Scroll to services"><MoveDown size={20}/></a><span>24/7 · SUBJECT TO CONFIRMATION</span></div></section>;
+}
