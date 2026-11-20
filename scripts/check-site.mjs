@@ -4,9 +4,13 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:3000';
 const response = await fetch(base);
 assert.equal(response.status, 200, 'Home page should render');
 const html = await response.text();
-for (const anchor of ['services', 'reviews', 'booking']) assert.ok(html.includes(`id="${anchor}"`), `Missing ${anchor} destination`);
+for (const anchor of ['services', 'videos', 'reviews', 'booking']) assert.ok(html.includes(`id="${anchor}"`), `Missing ${anchor} destination`);
 for (const href of ['tel:+639617380298', 'sms:+639617380298', 'viber://chat?number=%2B639482148277', 'https://t.me/Rence_24F']) assert.ok(html.includes(href), `Missing exact contact href: ${href}`);
 assert.ok(html.includes('https://rencemassage.world'), 'Missing canonical domain');
+assert.equal((html.match(/<video /g) || []).length, 2, 'Two supplied videos should be rendered');
+assert.equal((html.match(/preload="none"/g) || []).length, 2, 'Video data should not preload');
+assert.ok(!html.includes('autoPlay='), 'Videos should not autoplay');
+assert.ok(html.includes('rence-hero-cutout.webp'), 'The background-removed hero should be used');
 assert.ok(!html.includes('/reference-assets/'), 'Private reference photos must never be served');
 const rawSchema = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1];
 assert.ok(rawSchema, 'Structured data should exist');
@@ -21,4 +25,10 @@ for (const path of ['/robots.txt', '/sitemap.xml', '/icon.svg', '/opengraph-imag
  if (path === '/sitemap.xml') assert.ok((await res.text()).includes('https://rencemassage.world'));
 }
 assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
+for (const path of ['/videos/rence-session-01.mp4', '/videos/rence-session-02.mp4']) {
+ const res = await fetch(`${base}${path}`, {headers: {Range: 'bytes=0-1023'}});
+ assert.equal(res.status, 206, `${path} should support byte-range playback`);
+ assert.ok(res.headers.get('content-type')?.includes('video/mp4'));
+ await res.body?.cancel();
+}
 console.log('Passed: page rendering, anchor destinations, exact contact links, pricing schema, honest booking fallback, private reference exclusion, SEO routes, social icons, and response headers.');

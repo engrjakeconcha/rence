@@ -1,6 +1,6 @@
 # RENCE campaign photography plan
 
-Status: waiting for the actual Rence identity photograph and supporting visual references. No photos were supplied or generated. CSS artwork is used until approved derived files exist. Do not generate an invented substitute for Rence. Image generation is available in the development environment, but identity-based generation must wait for the required reference.
+Status: two portrait references and the official logo have now been supplied. The owner superseded the initial full-background campaign hero with an explicit request to remove the photo background and place Rence at the side. The built-in image-generation tool produced a transparent cutout, saved as `public/images/generated/rence-hero-cutout.webp` (123 KB). It is the current hero. Supporting campaign photographs below remain planned; those panels currently use CSS artwork. No supporting photos are claimed as generated. See `docs/media.md` for the executed cutout prompt.
 
 ## Shared direction
 
