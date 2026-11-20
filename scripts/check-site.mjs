@@ -8,8 +8,10 @@ for (const anchor of ['services', 'videos', 'reviews', 'booking']) assert.ok(htm
 for (const href of ['tel:+639617380298', 'sms:+639617380298', 'viber://chat?number=%2B639482148277', 'https://t.me/Rence_24F']) assert.ok(html.includes(href), `Missing exact contact href: ${href}`);
 assert.ok(html.includes('https://rencemassage.world'), 'Missing canonical domain');
 assert.equal((html.match(/<video /g) || []).length, 2, 'Two supplied videos should be rendered');
-assert.equal((html.match(/preload="none"/g) || []).length, 2, 'Video data should not preload');
-assert.ok(!html.includes('autoPlay='), 'Videos should not autoplay');
+assert.equal((html.match(/preload="metadata"/g) || []).length, 2, 'Videos should preload metadata');
+assert.equal((html.match(/autoPlay=""/g) || []).length, 2, 'Both videos should autoplay');
+assert.equal((html.match(/loop=""/g) || []).length, 2, 'Both videos should loop');
+assert.equal((html.match(/muted=""/g) || []).length, 2, 'Both videos should start muted');
 assert.ok(html.includes('rence-hero-cutout.webp'), 'The background-removed hero should be used');
 assert.ok(!html.includes('/reference-assets/'), 'Private reference photos must never be served');
 const rawSchema = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1];

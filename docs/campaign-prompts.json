@@ -1,0 +1,43 @@
+{
+  "tool": "Built-in imagegen",
+  "referenceHandling": "Owner-supplied private portrait references; originals are not served publicly.",
+  "sharedDirection": "New professional RENCE editorial campaign photograph. Preserve the supplied identity, age, skin tone, hair, facial structure and natural proportions. Plain black T-shirt with no logos, badges, or invented credentials. Deep forest-green setting, soft directional lighting, natural texture and restrained mint accents. Adult male clients appropriately draped, faces not shown. No embedded text or watermarks.",
+  "shots": [
+    {
+      "key": "profile",
+      "file": "rence-profile.webp",
+      "prompt": "Create a vertical waist-up professional portrait of Rence looking naturally toward the camera in a plain black T-shirt. Identity from the reference photos, with hair and face faithfully recognizable. Calm confident expression; deep forest-green studio background. No phone or mirror. Natural proportions, premium editorial portrait. Portrait composition.",
+      "status": "generated"
+    },
+    {
+      "key": "setup",
+      "file": "massage-setup.webp",
+      "prompt": "Rence preparing a professional portable massage table in a tidy, modern home interior with deep-green curtains and clean deep-green linens. He is arranging a folded towel, natural believable working posture and hands. Portrait identity consistent with references. Wide landscape composition.",
+      "status": "generated"
+    },
+    {
+      "key": "wholeBody",
+      "file": "massage-whole-body.webp",
+      "prompt": "Professional home massage scene, Rence wearing a plain black T-shirt applying a realistic back massage to an adult male client lying face down on a portable massage table. Client's lower body fully covered by deep-green towel, head turned away and not recognizable. Therapist standing beside the table, natural believable hands pressing upper-back muscles, realistic anatomy and contact. Wide landscape editorial photograph.",
+      "status": "not completed after a tool error"
+    },
+    {
+      "key": "ventosa",
+      "file": "massage-ventosa.webp",
+      "prompt": "Professional editorial close-up of a Ventosa cupping session: three clear modern suction cups placed plausibly on an adult male client's upper back beside the spine, not on the spine. Clean deep-green towel drapes the lower body, client's face outside frame. Rence's naturally proportioned hands and black T-shirt sleeve visible in background; no flames, no extreme marks, no medical promises. Focus on clean equipment and professional preparation. Landscape.",
+      "status": "not completed after a tool error"
+    },
+    {
+      "key": "technique",
+      "file": "massage-technique.webp",
+      "prompt": "Close-up editorial detail of Rence's hands applying a plausible gentle shoulder and upper-back massage on a properly draped adult male client lying face down. Hands have correct fingers and natural proportions, no exaggerated pressure. Client's face outside frame, clean deep-green linens, plain black T-shirt sleeve visible. Soft directional light and realistic skin texture, landscape.",
+      "status": "not completed after a tool error"
+    },
+    {
+      "key": "detail",
+      "file": "massage-detail.webp",
+      "prompt": "Premium wellness still life of neatly folded forest-green towels, an unbranded amber massage-oil bottle, and clean mobile-massage equipment arranged beside a portable massage table in a quiet home interior. No person needed in this frame. Deep forest-green backdrop, soft controlled highlights, tactile fabric, understated mint accent reflection. Landscape.",
+      "status": "not completed after a tool error"
+    }
+  ]
+}
