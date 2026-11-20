@@ -12,7 +12,7 @@ assert.equal((html.match(/preload="metadata"/g) || []).length, 2, 'Videos should
 assert.equal((html.match(/autoPlay=""/g) || []).length, 2, 'Both videos should autoplay');
 assert.equal((html.match(/loop=""/g) || []).length, 2, 'Both videos should loop');
 assert.equal((html.match(/muted=""/g) || []).length, 2, 'Both videos should start muted');
-assert.ok(html.includes('rence-hero-cutout.webp'), 'The background-removed hero should be used');
+assert.ok(html.includes('rence-hero-scrubs.webp'), 'The background-removed hero should be used');
 assert.ok(!html.includes('/reference-assets/'), 'Private reference photos must never be served');
 const rawSchema = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1];
 assert.ok(rawSchema, 'Structured data should exist');
@@ -20,7 +20,10 @@ const schema = JSON.parse(rawSchema);
 assert.deepEqual(schema.hasOfferCatalog.itemListElement.map(x => x.price), [699, 900, 1000]);
 assert.ok(!JSON.stringify(schema).includes('aggregateRating'), 'No invented ratings');
 assert.ok(!schema.address, 'No invented address');
-if (!process.env.NEXT_PUBLIC_GOOGLE_APPOINTMENT_BOOKING_URL) assert.ok(html.includes('ONLINE BOOKING COMING SOON'), 'Missing honest booking fallback');
+for (const field of ['name', 'contact', 'address', 'product']) assert.ok(html.includes(`name="${field}"`), `Missing booking field ${field}`);
+assert.ok(html.includes('https://jcit.digital'), 'Missing JCIT credits');
+assert.ok(!html.includes('ONLINE BOOKING COMING SOON'), 'Booking form should replace the placeholder');
+assert.ok(!html.includes('calendar.google.com'), 'Google Calendar should not be used for booking');
 for (const path of ['/robots.txt', '/sitemap.xml', '/icon.svg', '/opengraph-image', '/apple-icon']) {
  const res = await fetch(`${base}${path}`);
  assert.equal(res.status, 200, `${path} should load`);
@@ -33,4 +36,4 @@ for (const path of ['/videos/rence-session-01.mp4', '/videos/rence-session-02.mp
  assert.ok(res.headers.get('content-type')?.includes('video/mp4'));
  await res.body?.cancel();
 }
-console.log('Passed: page rendering, anchor destinations, exact contact links, pricing schema, honest booking fallback, private reference exclusion, SEO routes, social icons, and response headers.');
+console.log('Passed: page rendering, anchor destinations, exact contact links, pricing schema, booking request form, private reference exclusion, SEO routes, social icons, and response headers.');

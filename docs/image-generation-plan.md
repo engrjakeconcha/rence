@@ -34,3 +34,8 @@ Setup and detail keys are prepared for future supporting placements; the initial
 5. Export strips location metadata and contains no original reference file.
 6. Compare actual optimized output on mobile and desktop; check contrast behind hero text.
 7. Only then replace null entries in `lib/assets.ts` with `/images/generated/<filename>.webp`.
+
+
+### Hero update: brand scrubs
+
+Generated with the built-in image generation tool as an identity-preserving edit of the existing transparent cutout. Prompt: change only clothing to a premium plain forest-green (#10291B) scrub top and trousers, subtle mint (#8CF5AE) piping, natural matte fabric and folds. Preserve Rence’s face, hair, glasses, skin, proportions, phone, hands and mirror-selfie pose. Cover the torso/tattoo; no credentials, badges, logos or medical insignia. Keep a clean transparent background and portrait framing. Optimized to `public/images/generated/rence-hero-scrubs.webp`; mapped as the full-height hero.

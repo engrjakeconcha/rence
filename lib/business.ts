@@ -9,7 +9,7 @@ export const business = {
   services: [
     { id: 'whole-body-60', name: 'Whole body massage', duration: '60 minutes', price: 699, tag: 'THE EVERYDAY RESET', description: 'A little time for yourself. A whole-body reset, right at home.', image: 'wholeBody', art: 'flow' },
     { id: 'whole-body-90', name: 'Whole body massage', duration: '90 minutes', price: 900, tag: 'TAKE YOUR TIME', description: 'More time to slow down. Make room for a longer moment of calm.', image: 'technique', art: 'ripple' },
-    { id: 'ventosa', name: 'Massage with Ventosa', duration: null, price: 1000, tag: 'A DIFFERENT RHYTHM', description: 'Massage meets cupping. Ask Rence about the session and duration.', image: 'ventosa', art: 'orbit' },
+    { id: 'ventosa', name: 'Massage with Ventosa', duration: '90 minutes', price: 1000, tag: 'A DIFFERENT RHYTHM', description: 'A 90-minute massage and cupping session. Make room for a deeper reset.', image: 'ventosa', art: 'orbit' },
   ],
 } as const;
 export type Review = { quote: string; author: string; source: string };
